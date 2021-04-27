@@ -30,7 +30,15 @@ namespace SwaggerDocument
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(provider => _configuration);
-            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+            //services.AddMvc().AddJsonOptions(options =>
+            //{
+            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            //});
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                //options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
             // Add OpenAPI v3 document
             //services.AddOpenApiDocument();
             // add OpenAPI v3 document
